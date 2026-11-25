@@ -1,5 +1,4 @@
 services:
-  # L'app web: frontend + API + ffmpeg, Pillow e pandoc
   app:
     build: .
     ports:
