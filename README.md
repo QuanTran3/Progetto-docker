@@ -18,9 +18,6 @@ docker compose up -d --build
 Poi apri **http://localhost:8080** nel browser, trascina uno o più file,
 scegli il formato e premi **Converti**.
 
-La prima volta ci vuole qualche minuto, perché Docker scarica le immagini
-(Python e Gotenberg) e installa ffmpeg e pandoc.
-
 **Da VS Code:** con l'estensione Docker, fai clic destro su `docker-compose.yml`
 e scegli **Compose Up**. Nel pannello Docker vedi i container in esecuzione.
 
