@@ -1,0 +1,12 @@
+# File che NON devono finire nell'immagine Docker
+__pycache__/
+*.pyc
+.venv/
+.git/
+.vscode/
+.env
+.env.example
+README.md
+docker-compose.yml
+Dockerfile
+.dockerignore

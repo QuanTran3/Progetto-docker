@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convertitore di file</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%232f6fde'/><path d='M7 9h10l-3-3M17 15H7l3 3' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Convertitore di file</h1>
+      <p class="subtitle">Immagini, audio, video e documenti. I file restano sul tuo server.</p>
+    </header>
+
+    <label id="dropzone" class="dropzone" for="file-input">
+      <input id="file-input" type="file" multiple hidden>
+      <svg class="dropzone-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+              fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="dropzone-title">Trascina qui i file</span>
+      <span class="dropzone-hint">oppure <u>clicca per sceglierli</u></span>
+      <span id="limits" class="dropzone-limits"></span>
+    </label>
+
+    <section id="toolbar" class="toolbar" hidden>
+      <label class="all-target">
+        Converti tutti in
+        <select id="all-target"><option value="">scegli…</option></select>
+      </label>
+      <div class="toolbar-actions">
+        <button id="clear-btn" class="btn btn-ghost" type="button">Svuota lista</button>
+        <button id="convert-all-btn" class="btn btn-primary" type="button">Converti tutti</button>
+      </div>
+    </section>
+
+    <ul id="file-list" class="file-list"></ul>
+
+    <footer>
+      <details>
+        <summary>Formati supportati</summary>
+        <div id="formats-table"></div>
+      </details>
+    </footer>
+  </main>
+
+  <template id="card-template">
+    <li class="card">
+      <span class="badge"></span>
+      <div class="card-main">
+        <div class="card-top">
+          <span class="name"></span>
+          <span class="size"></span>
+        </div>
+        <div class="card-bottom">
+          <span class="arrow">→</span>
+          <select class="target"></select>
+          <span class="status"></span>
+        </div>
+        <div class="progress"><div class="progress-bar"></div></div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-primary convert-btn" type="button">Converti</button>
+        <a class="btn btn-success download-btn" hidden>Scarica</a>
+        <button class="btn-icon remove-btn" type="button" title="Rimuovi" aria-label="Rimuovi">×</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

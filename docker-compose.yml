@@ -1,0 +1,26 @@
+services:
+  # L'app web: frontend + API + ffmpeg, Pillow e pandoc
+  app:
+    build: .
+    ports:
+      - "${PORT:-8080}:8000"
+    environment:
+      GOTENBERG_URL: http://gotenberg:3000
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-500}
+      FILE_TTL_MINUTES: ${FILE_TTL_MINUTES:-60}
+      MAX_WORKERS: ${MAX_WORKERS:-2}
+    volumes:
+      - dati:/data
+    depends_on:
+      - gotenberg
+    restart: unless-stopped
+    cpus: "${APP_CPUS:-2}"
+    mem_limit: ${APP_MEMORY:-2g}
+
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    restart: unless-stopped
+    mem_limit: ${GOTENBERG_MEMORY:-1g}
+
+volumes:
+  dati:
